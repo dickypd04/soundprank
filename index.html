@@ -1,103 +1,131 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Preview Dokumen - Drive</title>
-
+  <!doctype html>
+<html lang="id">
+<head>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #f8f9fa;
-    }
-    /* Header Drive */
-    .header {
-      height: 56px;
-      background: white;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .header img {
-      width: 28px;
-      margin-right: 10px;
-    }
-
-    /* Container mirip preview file */
-    .container {
-      max-width: 700px;
-      margin: 50px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-      text-align: center;
-    }
-
-    .filename {
-      font-size: 22px;
-      margin-bottom: 20px;
-    }
-
-    .preview-box {
-      width: 100%;
-      height: 300px;
-      border: 2px dashed #ddd;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #999;
-      font-size: 18px;
-      margin-bottom: 24px;
-    }
-
-    .btn {
-      padding: 10px 20px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      color: white;
-      font-size: 15px;
-      background: #1a73e8;
-    }
-
-    .hint {
-      margin-top: 15px;
-      font-size: 13px;
-      color: #666;
+      background: #202124;
+      font-family: Arial, sans-serif;
+      color: #e8eaed;
     }
   </style>
 </head>
 
 <body>
-  <div class="header">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_Drive_icon_%282020%29.svg">
-    Drive – Preview
+
+  <!-- HEADER FILE + ICON (Google Drive Style) -->
+  <div style="display:flex;align-items:center;gap:10px;padding:14px 22px;border-bottom:1px solid #3c4043;">
+      <img src="iconGD.png"
+           alt="rar"
+           style="width:50px;height:30px;">
+
+      <span style="font-size:20px;font-weight:bold;">
+        Google Drive
+      </span>
   </div>
+
+  <!-- DI SINI LANJUTAN KODE HTML-MU NANTI -->
+
+  <style>
+    body {
+      margin: 0;
+      background: #202124;
+      font-family: Arial, sans-serif;
+      color: #e8eaed;
+    }
+    .topbar {
+      height: 56px;
+      background: #303134;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 18px;
+    }
+    .container {
+      width: 70%;
+      margin: 40px auto;
+      background: #fff;
+      color: #202124;
+      border-radius: 12px;
+      padding: 30px;
+    }
+    .title {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    .table th {
+      text-align: left;
+      padding-bottom: 10px;
+      font-weight: normal;
+      color: #5f6368;
+      border-bottom: 1px solid #dadce0;
+    }
+    .table td {
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f3f4;
+    }
+    .actions {
+      text-align: center;
+      margin-top: 25px;
+    }
+    .download-btn {
+      padding: 10px 18px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .hint {
+      margin-top: 10px;
+      color: #5f6368;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">Moderen Clasic_By Awaku</div>
 
   <div class="container">
-    <div class="filename">Dokumen_Rahasia.pdf</div>
-
-    <div class="preview-box">
-        <img src="https://i.postimg.cc/52tbXtpt/PMA_Baner.jpg" 
-        style="max-width:100%; max-height:100%; border-radius:6px;">
+    <div class="title">Moderen Clasic_By Awaku 
+      <span style="color:#5f6368; font-size:14px;">Tak ada item</span>
     </div>
 
+    <table class="table">
+      <tr>
+        <th>Nama</th>
+        <th>Terakhir diubah</th>
+        <th>Ukuran file</th>
+      </tr>
+    </table>
 
-    <button class="btn" id="downloadBtn">Download</button>
-    <div class="hint">Memeriksa file...</div>
+    <!-- PREVIEW GAMBAR PALSU -->
+    <div class="preview-file" style="text-align:center; margin-top:25px;">
+      <img 
+        src="RAR.png"
+        alt="file icon"
+        style="width:90px; opacity:0.9; margin-bottom:15px;">
+      <div style="font-size:15px; color:#5f6368;">Moderen Clasic_By Awaku</div>
+    </div>
+
+    <div class="actions">
+      <button class="download-btn">Download</button>
+      <p class="hint">Memeriksa file...</p>
+    </div>
   </div>
 
-  <!-- Suara autoplay -->
-  <audio id="audio" 
+  <audio id="audio"
     src="https://cdn.discordapp.com/attachments/1224132178804473866/1440975409150951546/desah-made-with-Voicemod.mp3"
-    preload="auto">
-  </audio>
+    preload="auto"></audio>
 
   <script>
     const audio = document.getElementById("audio");
@@ -106,15 +134,14 @@
     window.addEventListener("load", async () => {
       try {
         await audio.play();
-        hint.textContent = "Loading file berhasil...";
+        hint.textContent = "File berhasil dimuat.";
       } catch {
         hint.textContent = "Klik halaman agar file dapat diputar.";
       }
     });
 
-    document.getElementById("downloadBtn").addEventListener("click", () => {
-      // fake tombol biar makin meyakinkan
-      hint.textContent = "Menghubungkan ke server...";
+    document.querySelector(".download-btn").addEventListener("click", () => {
+      hint.textContent = "Mengunduh...";
       setTimeout(() => hint.textContent = "Download gagal. Coba lagi nanti.", 1500);
     });
   </script>
