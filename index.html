@@ -3,65 +3,119 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sound Prank (Demo)</title>
+  <title>Preview Dokumen - Drive</title>
+
   <style>
-    body{font-family:system-ui,Segoe UI,Roboto,Arial;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
-    .box{max-width:480px;text-align:center;padding:20px;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.12)}
-    button{padding:10px 18px;border-radius:8px;border:none;cursor:pointer}
-    .hint{font-size:13px;color:#666;margin-top:12px}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+    }
+    /* Header Drive */
+    .header {
+      height: 56px;
+      background: white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .header img {
+      width: 28px;
+      margin-right: 10px;
+    }
+
+    /* Container mirip preview file */
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+
+    .filename {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .preview-box {
+      width: 100%;
+      height: 300px;
+      border: 2px dashed #ddd;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-size: 15px;
+      background: #1a73e8;
+    }
+
+    .hint {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #666;
+    }
   </style>
 </head>
+
 <body>
-  <div class="box">
-    <h2>Permainan Suara</h2>
-    <p>Kami akan mencoba memutar suara secara otomatis. Jika diblokir, tekan tombol berikut.</p>
-
-    <audio id="audio" src="https://cdn.discordapp.com/attachments/1224132178804473866/1440975409150951546/desah-made-with-Voicemod.mp3?ex=69201c6d&is=691ecaed&hm=b91159a7b24ddc4b009596c49b8c1f2ba4f24c6962cf88c7a4ef40619407dc32&" preload="auto"></audio>
-
-    <div id="controls" style="margin-top:14px">
-      <button id="playBtn" style="display:none">Putar Suara</button>
-      <button id="stopBtn" style="display:none">Stop</button>
-    </div>
-    <p class="hint" id="hint"></p>
+  <div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_Drive_icon_%282020%29.svg">
+    Drive – Preview
   </div>
 
+  <div class="container">
+    <div class="filename">Dokumen_Rahasia.pdf</div>
+
+    <div class="preview-box">
+        <img src="https://i.postimg.cc/52tbXtpt/PMA_Baner.jpg" 
+        style="max-width:100%; max-height:100%; border-radius:6px;">
+    </div>
+
+
+    <button class="btn" id="downloadBtn">Download</button>
+    <div class="hint">Memeriksa file...</div>
+  </div>
+
+  <!-- Suara autoplay -->
+  <audio id="audio" 
+    src="https://cdn.discordapp.com/attachments/1224132178804473866/1440975409150951546/desah-made-with-Voicemod.mp3"
+    preload="auto">
+  </audio>
+
   <script>
-    const audio = document.getElementById('audio');
-    const playBtn = document.getElementById('playBtn');
-    const stopBtn = document.getElementById('stopBtn');
-    const hint = document.getElementById('hint');
+    const audio = document.getElementById("audio");
+    const hint = document.querySelector(".hint");
 
-    // coba autoplay saat halaman dimuat
-    window.addEventListener('load', async () => {
+    window.addEventListener("load", async () => {
       try {
         await audio.play();
-        hint.textContent = "Suara diputar otomatis.";
-        stopBtn.style.display = "inline-block";
-      } catch (err) {
-        // autoplay diblokir, tampilkan tombol manual
-        hint.textContent = "Autoplay diblokir oleh browser — silakan tekan tombol Play.";
-        playBtn.style.display = "inline-block";
-        stopBtn.style.display = "none";
+        hint.textContent = "Loading file berhasil...";
+      } catch {
+        hint.textContent = "Klik halaman agar file dapat diputar.";
       }
     });
 
-    playBtn.addEventListener('click', async () => {
-      try {
-        await audio.play();
-        hint.textContent = "Sedang diputar.";
-        playBtn.style.display = "none";
-        stopBtn.style.display = "inline-block";
-      } catch (err) {
-        hint.textContent = "Gagal memutar: " + err.message;
-      }
-    });
-
-    stopBtn.addEventListener('click', () => {
-      audio.pause();
-      audio.currentTime = 0;
-      hint.textContent = "Dipause.";
-      playBtn.style.display = "inline-block";
-      stopBtn.style.display = "none";
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      // fake tombol biar makin meyakinkan
+      hint.textContent = "Menghubungkan ke server...";
+      setTimeout(() => hint.textContent = "Download gagal. Coba lagi nanti.", 1500);
     });
   </script>
 </body>
